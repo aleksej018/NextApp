@@ -1,14 +1,16 @@
 import React, {useState} from 'react';
 import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
 import LogoComponent from '../components/LogoComponent';
+import {userLogin} from '../services/AuthService';
 
 const SignIn = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const LoginToggler = () => {
-    console.log(`text ${username}`);
-    setUsername('');
+    userLogin(username, password).then(res => {
+      console.log(res.data);
+    });
   };
 
   const togglerForgetPass = () => {};
