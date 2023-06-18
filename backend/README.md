@@ -51,3 +51,7 @@ export default class {Name}Repository implements {Name}RepositoryContract {
   }
 }
 ```
+
+#### Database
+
+https://dbdiagram.io/d/648db52e02bd1c4a5ea40e38
