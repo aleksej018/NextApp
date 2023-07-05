@@ -1,10 +1,13 @@
 import React from 'react';
-import {LoginScreen, SignUpScreen} from './src/screens';
+// import {LoginScreen, SignUpScreen} from './src/screens';
+import Navigation from './src/navigation/Navigation';
 
 const App = () => {
   return (
     <>
-      <LoginScreen />
+      <Provider>
+        <Navigation />
+      </Provider>
     </>
   );
 };

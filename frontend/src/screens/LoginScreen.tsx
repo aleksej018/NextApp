@@ -3,7 +3,14 @@ import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
 import LogoComponent from '../components/LogoComponent';
 import {userLogin} from '../services/AuthService';
 
-const SignIn = () => {
+enum Screens {
+  HOME = 'Home',
+  SIGN_IN = 'SignIn',
+  SIGN_UP = 'SignUp',
+  SPLASH = 'Splash',
+}
+
+const SignIn = ({navigation}: any) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -16,7 +23,7 @@ const SignIn = () => {
   const togglerForgetPass = () => {};
 
   const togglerRegister = () => {
-    console.log('asdasdsad');
+    navigation.push(Screens.SIGN_UP);
   };
 
   const disabled = username === '' || password === '';
