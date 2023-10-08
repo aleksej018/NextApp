@@ -1,22 +1,20 @@
 import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
 import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
 import LogoComponent from '../components/LogoComponent';
 import {userLogin} from '../services/AuthService';
-
-enum Screens {
-  HOME = 'Home',
-  SIGN_IN = 'SignIn',
-  SIGN_UP = 'SignUp',
-  SPLASH = 'Splash',
-}
+import {Screens} from '../util/enum';
+import {setToken} from '../components/redux/store/state/tokenSlice';
 
 const SignIn = ({navigation}: any) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
+  const dispatch = useDispatch();
+
   const LoginToggler = () => {
     userLogin(username, password).then(res => {
-      console.log(res.data);
+      dispatch(setToken(res.data));
     });
   };
 
@@ -30,9 +28,9 @@ const SignIn = ({navigation}: any) => {
 
   return (
     <>
-      <View style={styles.signin}>
+      <View style={styles.signIn}>
         <LogoComponent />
-        <View style={styles.signin_form}>
+        <View style={styles.signIn_form}>
           <View>
             <TextInput
               placeholder="username"
@@ -61,7 +59,7 @@ const SignIn = ({navigation}: any) => {
 };
 
 const styles = StyleSheet.create({
-  signin: {
+  signIn: {
     margin: '5%',
   },
   input: {
@@ -69,7 +67,7 @@ const styles = StyleSheet.create({
     marginBottom: '5%',
     textAlign: 'center',
   },
-  signin_form: {
+  signIn_form: {
     margin: '10%',
   },
 });

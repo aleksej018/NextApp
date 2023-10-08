@@ -1,20 +1,23 @@
 import {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
+import {useSelector, useDispatch} from 'react-redux';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {LoginScreen, SignUpScreen, SplashScreen} from '../screens';
-
-enum Screens {
-  HOME = 'Home',
-  SIGN_IN = 'SignIn',
-  SIGN_UP = 'SignUp',
-  SPLASH = 'Splash',
-}
+import {Screens} from '../util/enum';
+import {RootState} from '../components/redux/store/store';
+import HomeScreen from '../screens/HomeScreen';
 
 const Stack = createNativeStackNavigator();
 const screenOptions = {headerShown: false};
 
 const AppNavigation = () => {
-  return <></>;
+  return (
+    <Stack.Navigator
+      initialRouteName={Screens.HOME}
+      screenOptions={screenOptions}>
+      <Stack.Screen name={Screens.HOME} component={HomeScreen} />
+    </Stack.Navigator>
+  );
 };
 
 const AuthNavigation = () => {
@@ -30,11 +33,11 @@ const AuthNavigation = () => {
 };
 
 const Navigation = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [token, setToken] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const token = useSelector((state: RootState) => state.token.value);
 
   if (isLoading) {
-    return <SplashScreen />;
+    return <SplashScreen setLoading={setIsLoading} />;
   }
 
   return (
