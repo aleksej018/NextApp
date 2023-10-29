@@ -32,16 +32,11 @@ function SplashScreen({
   }, []);
 
   return (
-    <>
-      <LottieView
-        source={require('../../assets/animations/splash.json')}
-        autoPlay
-        loop
-      />
-      <View>
-        <Text>Milos</Text>
-      </View>
-    </>
+    <LottieView
+      source={require('../../assets/animations/splash.json')}
+      autoPlay
+      loop
+    />
   );
 }
 
