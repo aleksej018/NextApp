@@ -28,18 +28,20 @@ function SplashScreen({
   };
 
   useEffect(() => {
-    setTimeout(() => getToken(), 1000);
+    setTimeout(() => getToken(), 3000);
   }, []);
 
   return (
-    // <LottieView
-    //   source={require('../../assets/animations/splash_animation.json')}
-    //   autoPlay
-    //   loop
-    // />
-    <View>
-      <Text>Milos</Text>
-    </View>
+    <>
+      <LottieView
+        source={require('../../assets/animations/splash.json')}
+        autoPlay
+        loop
+      />
+      <View>
+        <Text>Milos</Text>
+      </View>
+    </>
   );
 }
 
